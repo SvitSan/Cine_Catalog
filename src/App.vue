@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { movies } from './data/movies';
+
+</script>
+
 
 
 <template>
@@ -17,5 +22,6 @@
     <hr>
 
     <RouterView />
+    
   </div>
 </template>

@@ -23,6 +23,28 @@ const movie = computed(() => {
 
     <h1>{{ movie.title }}</h1>
 
+    <RouterLink :to="{
+      name: 'movie-overview',
+      params: {
+        id: movie.id
+      }
+    }">
+      Overview
+    </RouterLink>
+
+    |
+
+    <RouterLink :to="{
+      name: 'movie-cast',
+      params: {
+        id: movie.id
+      }
+    }">
+      Cast
+    </RouterLink>
+
+    <hr>
+
     <p>
       <strong>Year:</strong>
       {{ movie.year }}
@@ -36,5 +58,10 @@ const movie = computed(() => {
     <p>
       {{ movie.overview }}
     </p>
+
+    <hr>
+
+    <RouterView />
+
   </div>
 </template>
