@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { movies } from './data/movies';
 
 </script>
 
@@ -17,6 +16,10 @@ import { movies } from './data/movies';
       <RouterLink to="/movies">
         Movies
       </RouterLink>
+
+      |
+
+      <RouterLink to="/watchlist">Watchlist</RouterLink>
     </nav>
 
     <hr>
