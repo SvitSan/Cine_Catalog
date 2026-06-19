@@ -42,7 +42,7 @@ function filterGenre(genre) {
     <button @click="filterGenre('Romance')">
       Romance
     </button>
-
+    
     <hr>
 
     <ul>

@@ -4,6 +4,7 @@ import MoviesView from '../views/MoviesView.vue'
 import MovieDetailView from '../views/MovieDetailView.vue'
 import MovieOverview from '../components/MovieOverview.vue'
 import MovieCast from '../components/MovieCast.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -11,10 +12,17 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+
   {
     path: '/movies',
     name: 'movies',
     component: MoviesView
+  },
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFoundView
   },
 
   {
