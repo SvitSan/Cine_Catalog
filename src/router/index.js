@@ -1,11 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import MoviesView from "../views/MoviesView.vue";
-import MovieDetailView from "../views/MovieDetailView.vue";
 import MovieOverview from "../components/MovieOverview.vue";
 import MovieCast from "../components/MovieCast.vue";
-import NotFoundView from "../views/NotFoundView.vue";
-import WatchlistView from "../views/WatchlistView.vue";
 import { auth } from "../auth.js";
 const routes = [
   {
@@ -17,30 +13,14 @@ const routes = [
   {
     path: "/movies",
     name: "movies",
-    component: MoviesView,
-  },
-
-  {
-    path: "/:pathMatch(.*)*",
-    name: "not-found",
-    component: NotFoundView,
-  },
-
-  {
-    path: '/watchlist',
-    name: 'watchlist',
-    component: WatchlistView,
-
-    meta: {
-      requiresAuth: true
-    }
+    component: () => import("../views/MoviesView.vue"),
   },
 
   {
     path: "/movies/:id",
     name: "movie-detail",
-    component: MovieDetailView,
-
+    component: () => import("../views/MovieDetailView.vue"),
+    
     children: [
       {
         path: "overview",
@@ -54,7 +34,24 @@ const routes = [
       },
     ],
   },
-]
+  
+  {
+    path: "/watchlist",
+    name: "watchlist",
+    component: () => import("../views/WatchlistView.vue"),
+
+    meta: {
+      requiresAuth: true,
+    },
+  },
+
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    component: () => import('../views/NotFoundView.vue')
+  },
+
+];
 
 const router = createRouter({
   history: createWebHistory(),
@@ -62,8 +59,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  if (to.meta.requiresAuth && 
-    !auth.isLoggedIn) {
+  if (to.meta.requiresAuth && !auth.isLoggedIn) {
     return {
       name: "home",
     };

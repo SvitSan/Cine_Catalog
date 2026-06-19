@@ -1,10 +1,18 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
-  <div>
-    <h3>Cast</h3>
-    <ul>
-      <li>Actor A</li>
-      <li>Actor B</li>
-      <li>Actor C</li>
-    </ul>
-  </div>
+    <div>
+        <ul>
+            <li>Lisht A</li>
+            <li>Lisht B</li>
+            <li>Lisht C</li>
+            <li>Lisht D</li>
+        </ul>
+    </div>
 </template>
+
+<style lang="sass" scoped>
+
+</style>
