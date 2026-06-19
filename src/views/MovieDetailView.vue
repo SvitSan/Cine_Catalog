@@ -1,15 +1,22 @@
 <script setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { movies } from '../data/movies'
 
+
 const route = useRoute()
+const router = useRouter()
 
 const movie = computed(() => {
   return movies.find(
     m => m.id === Number(route.params.id)
   )
 })
+
+function goBack() {
+  router.push('/movies')
+}
+
 </script>
 
 
@@ -17,9 +24,9 @@ const movie = computed(() => {
 
   <div v-if="movie">
 
-    <RouterLink to="/movies">
-      Backe to Movies
-    </RouterLink>
+    <button @click="goBack">
+      Back to Movies
+    </button>
 
     <h1>{{ movie.title }}</h1>
 

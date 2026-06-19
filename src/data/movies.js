@@ -10,7 +10,7 @@ export const movies = [
     id: 2,
     title: "Neon Circuit",
     year: 2023,
-    genre: "Sci-Fi",
+    genre: "Drama",
     overview: "A high-tech thriller set in a futuristic city."
   },
   {
